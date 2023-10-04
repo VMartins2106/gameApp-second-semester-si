@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:game_app/pages/cs_page.dart';
-import 'package:game_app/pages/dota_page.dart';
-import 'package:game_app/pages/lol_page.dart';
-import 'package:game_app/pages/vava_page.dart';
+import 'package:game_app/game_pages/cs_page.dart';
+import 'package:game_app/game_pages/dota_page.dart';
+import 'package:game_app/game_pages/lol_page.dart';
+import 'package:game_app/game_pages/vava_page.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 
 class HiddenDrawer extends StatefulWidget {

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:game_app/hidden_drawer.dart';
+import 'package:game_app/auth/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HiddenDrawer(),
+      home: LoginPage(),
       theme: ThemeData(primarySwatch: Colors.deepPurple),
     );
   }
