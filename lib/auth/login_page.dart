@@ -1,4 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:game_app/auth/recover_password_page.dart';
+import 'package:game_app/auth/register_page.dart';
+import 'package:game_app/game_pages/hidden_drawer.dart';
+import 'package:game_app/game_pages/home_page.dart';
+import 'package:game_app/widgets/widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -133,10 +139,10 @@ class _LoginPageState extends State<LoginPage> {
                                 TextSpan(
                                   text: 'Esqueceu sua senha?',
                                   style: const TextStyle(color: Colors.blueGrey),
-                                  /*recognizer: TapGestureRecognizer()
+                                  recognizer: TapGestureRecognizer()
                                   ..onTap = () { 
                                     nextScreen(context, const RecoverPassword());
-                                  },*/
+                                  },
                                 ),
                               ],
                             ),
@@ -170,6 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               onPressed: (() {
                                   //login();
+                                  nextScreenReplace(context, const HiddenDrawer());
                                 }
                               ),                          
                             ),
@@ -187,10 +194,10 @@ class _LoginPageState extends State<LoginPage> {
                                 TextSpan(
                                   text: 'Cadastrar',
                                   style: const TextStyle(color: Colors.blue),
-                                  /*recognizer: TapGestureRecognizer()
+                                  recognizer: TapGestureRecognizer()
                                   ..onTap = () { 
                                     nextScreen(context, const RegisterPage());
-                                  },*/
+                                  },
                                 ),
                               ],
                             ),
