@@ -32,19 +32,20 @@ class _LoginPageState extends State<LoginPage> {
       ? const Center(child: CircularProgressIndicator(color: Colors.black))
       : SingleChildScrollView(
         child: Container(
+          color: Colors.black,
           width: double.maxFinite,
           height: height,
           child: Stack(
             children: <Widget>[
-              Image.asset("assets/images/login.jpg",
+              Image.asset("assets/images/login.jpeg",
               ),
               Positioned(
-                top: height * 0.378,
+                top: height * 0.400,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: width * 0.08,
                     right: width * 0.1,
-                    top: height * 0.18,
+                    top: height * 0.135,
                   ),
                   width: width,
                   height: height,
@@ -176,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               onPressed: (() {
                                   //login();
-                                  nextScreenReplace(context, const HiddenDrawer());
+                                  nextScreen(context, const HiddenDrawer());
                                 }
                               ),                          
                             ),
@@ -216,9 +217,8 @@ class _LoginPageState extends State<LoginPage> {
                     right: width * 0.15,
                     bottom: height * 0.06,
                   ),
-                  child: Text(
-                    "NOME DA EMPRESA (CUSTOMIZAR CORES E FONTES)"
-                  )
+                  child: Image.asset("assets/images/logo-nome.png",
+                    ),
                 ),
               ),
             ],    

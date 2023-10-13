@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_app/game_pages/cs_page.dart';
 import 'package:game_app/game_pages/dota_page.dart';
+import 'package:game_app/game_pages/home_page.dart';
 import 'package:game_app/game_pages/lol_page.dart';
 import 'package:game_app/game_pages/vava_page.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
@@ -42,7 +43,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
             });
           }
         ),
-        const CSPage()
+        const HomePage()
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
