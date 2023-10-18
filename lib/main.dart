@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:game_app/auth/login_page.dart';
+import 'package:game_app/game_pages/lol_page.dart';
 
 void main() {
   runApp(const MyApp());
