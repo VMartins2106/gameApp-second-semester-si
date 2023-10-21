@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               Image.asset("assets/images/login.jpeg",
               ),
               Positioned(
-                top: height * 0.400,
+                top: height * 0.410,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: width * 0.08,
@@ -51,10 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: height,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 230, 230, 230),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70),
-                      topRight: Radius.circular(70),
-                    ),
+                    borderRadius: BorderRadius.vertical(top: Radius.elliptical(300, 80))
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(top: height * 0.02),
@@ -160,8 +157,8 @@ class _LoginPageState extends State<LoginPage> {
                                 end: Alignment.bottomRight,
                                 stops: [0.3, 1],
                                 colors: [
-                                Color.fromARGB(255, 145, 185, 204),
-                                Color.fromARGB(255, 136, 226, 192),
+                                Color.fromARGB(132, 76, 169, 206),
+                                Color.fromARGB(255, 48, 111, 192),
                                 ],
                               ),
                               borderRadius: BorderRadius.all(
@@ -169,16 +166,16 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             child: MaterialButton(
-                              child: Text("Entrar",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                ),
-                              ),
                               onPressed: (() {
                                   //login();
                                   nextScreen(context, const HiddenDrawer());
                                 }
+                              ),
+                              child: Text("Entrar",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: width * 0.05,
+                                ),
                               ),                          
                             ),
                           ),
@@ -213,12 +210,14 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.only(
-                    left: width * 0.15,
+                    top: height * 0.05,
+                    left: width * 0.12,
                     right: width * 0.15,
                     bottom: height * 0.06,
                   ),
-                  child: Image.asset("assets/images/logo-nome.png",
-                    ),
+                  child: Image.asset(
+                    "assets/images/logo-nome.png",
+                  ),
                 ),
               ),
             ],    

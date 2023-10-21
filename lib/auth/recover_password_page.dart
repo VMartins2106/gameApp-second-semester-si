@@ -38,7 +38,7 @@ class _RecoverPasswordState extends State<RecoverPassword> {
           child: Stack(
             children: <Widget>[
               Image.asset(
-                "assets/images/homePNG.png",
+                "assets/images/logo.png",
                 width: double.maxFinite,
                 height: height * 0.33465,
               ),
