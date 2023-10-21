@@ -33,27 +33,27 @@ class _LoLPageState extends State<LoLPage> {
 
   List<CardItem> items = [
     const CardItem(
-      urlImage: "assets/images/robo.jpg",
+      urlImage: "assets/images/player_lol/robo.jpg",
       title: "Robo",
       subtitle: "\Top Laner"
     ),
     const CardItem(
-      urlImage: "assets/images/ranger.png",
+      urlImage: "assets/images/player_lol/ranger.png",
       title: "Ranger",
       subtitle: "\Jungler"
     ),
     const CardItem(
-      urlImage: "assets/images/yoda.png",
+      urlImage: "assets/images/player_lol/yoda.png",
       title: "YoDa",
       subtitle: "\Mid Laner"
     ),
     const CardItem(
-      urlImage: "assets/images/titan.jpg",
+      urlImage: "assets/images/player_lol/titan.jpg",
       title: "Titan",
       subtitle: "\ADC"
     ),
     const CardItem(
-      urlImage: "assets/images/redbert.jpg",
+      urlImage: "assets/images/player_lol/redbert.jpg",
       title: "RedBert",
       subtitle: "\Suport"
     ),
@@ -61,44 +61,44 @@ class _LoLPageState extends State<LoLPage> {
 
   List<LolItem> itemsLol = [
     const LolItem(
-      image: "assets/images/desafiante.png",
+      image: "assets/images/elo_lol/desafiante.png",
       title: "0.024%",
     ),
     const LolItem(
-      image:"assets/images/grao_mestre.png",
+      image:"assets/images/elo_lol/grao_mestre.png",
       title: "0.063%",
     ),
     const LolItem(
-      image: "assets/images/mestre.png",
-      title: "0,36%",
+      image: "assets/images/elo_lol/mestre.png",
+      title: "0.36%",
     ),
     const LolItem(
-      image: "assets/images/diamante.png",
-      title: "2,7%",
+      image: "assets/images/elo_lol/diamante.png",
+      title: "2.7%",
     ),
     const LolItem(
-      image: "assets/images/esmeralda.png",
-      title: "8,6%",
+      image: "assets/images/elo_lol/esmeralda.png",
+      title: "8.6%",
     ),
     const LolItem(
-      image: "assets/images/platina.png",
+      image: "assets/images/elo_lol/platina.png",
       title: "16%",
     ),
     const LolItem(
-      image: "assets/images/ouro.png",
+      image: "assets/images/elo_lol/ouro.png",
       title: "21%",
     ),
     const LolItem(
-      image: "assets/images/prata.png",
+      image: "assets/images/elo_lol/prata.png",
       title: "21%",
     ),
     const LolItem(
-      image: "assets/images/bronze.png",
+      image: "assets/images/elo_lol/bronze.png",
       title: "20%",
     ),
     const LolItem(
-      image: "assets/images/ferro.png",
-      title: "8,7%",
+      image: "assets/images/elo_lol/ferro.png",
+      title: "8.7%",
     ),
   ];
 
@@ -114,11 +114,12 @@ class _LoLPageState extends State<LoLPage> {
     height1 = height;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Container(
           color: Colors.black,
           width: width,
-          height: height + (height * 0.05),
+          height: height + (height * 0.12),
           child: Stack(
             children: <Widget>[
               Image.asset(
@@ -168,7 +169,7 @@ class _LoLPageState extends State<LoLPage> {
                                     ),
                                   ),
                                   Image.asset(
-                                    "assets/images/3_5.png",
+                                    "assets/images/4_5.png",
                                     height: height * 0.035,
                                   ),
                                 ],
@@ -212,9 +213,11 @@ class _LoLPageState extends State<LoLPage> {
                                 "League of Legends é um jogo gratuito de MOBA distribuído pela Riot Games. Ele é disponibilizado para PC e foi inspirado no modo Defense of the Ancients de Warcraft III. Nele temos duas equipes de 5 campeões cada disputando uma vitória na batalha dentro do mapa do jogo.",
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
+                                  height: 1.1,
                                   color: Colors.white,
                                   fontFamily: 'FrizQuadrata',
-                                  fontSize: width * 0.04
+                                  fontSize: width * 0.04,
+                                  leadingDistribution: TextLeadingDistribution.even,
                                 ),
                               ),
                               SizedBox(height: height * 0.01),
@@ -222,14 +225,16 @@ class _LoLPageState extends State<LoLPage> {
                                 "São mais de 140 campeões com histórias diferentes. Seu critério de escolha pode ser ou pensando no seu estilo de jogo ou por se identificar mais com algum personagem. Afinal, são mais de 160 campeões você certamente irá encontrar o que você mais se divirta!",
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
+                                  height: 1.1,
                                   color: Colors.white,
                                   fontFamily: 'FrizQuadrata',
-                                  fontSize: width * 0.04
+                                  fontSize: width * 0.04,
+                                  leadingDistribution: TextLeadingDistribution.even,
                                 ),
                               ),
-                              SizedBox(height: height * 0.01),
+                              SizedBox(height: height * 0.03),
                               Text(
-                                "Venha conhecer o time da São Judas Gaming!",
+                                "Conheça o time da SJG",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
@@ -239,7 +244,7 @@ class _LoLPageState extends State<LoLPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: height * 0.03),
+                          SizedBox(height: height * 0.035),
                           Container(
                             height: height * 0.2,                            
                             child: ListView.separated(

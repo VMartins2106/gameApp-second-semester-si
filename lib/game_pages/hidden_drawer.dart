@@ -18,6 +18,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
   List<ScreenHiddenDrawer> _pages = [];
 
   String imagem = 'assets/images/homePNG.png';
+  Color appBarColor = Colors.deepPurple;
 
   final myTextStyle = const TextStyle(
     fontWeight: FontWeight.bold,
@@ -40,6 +41,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           onTap: () {
             setState(() {
               imagem = "assets/images/homePNG.png";
+              appBarColor = Colors.deepPurple;
             });
           }
         ),
@@ -54,6 +56,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           onTap: () {
             setState(() {
               imagem = "assets/images/cs.jpg";
+              appBarColor = const Color.fromARGB(255, 73, 47, 38);
             });
           }
         ),
@@ -68,6 +71,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           onTap: () {
             setState(() {
               imagem = "assets/images/lol.jpg";
+              appBarColor = Colors.deepPurple;
             });
           }
         ),
@@ -82,6 +86,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           onTap: () {
             setState(() {
               imagem = "assets/images/vava.jpg";
+              appBarColor = Colors.blue;
             });
           }
         ),
@@ -96,6 +101,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
           onTap: () {
             setState(() {
               imagem = "assets/images/dota.jpg";
+              appBarColor = const Color.fromARGB(255, 27, 80, 22);
             });
           }
         ),
@@ -108,6 +114,9 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
   Widget build(BuildContext context) {
 
     return HiddenDrawerMenu(
+      backgroundColorAppBar: appBarColor,
+      isTitleCentered: true,
+      isDraggable: true,
       withShadow: true,
       backgroundMenu: DecorationImage(image: ExactAssetImage(imagem),fit: BoxFit.fill),
       backgroundColorMenu: Colors.deepPurple.shade100,
@@ -116,6 +125,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
       enableScaleAnimation: true,
       initPositionSelected: 0,
       contentCornerRadius: 60,
+      
     );
   }
 }
