@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.vertical(top: Radius.elliptical(300, 80))
                   ),
                   child: Padding(
-                    padding: EdgeInsets.only(top: height * 0.02),
+                    padding: EdgeInsets.only(top: height * 0.045),
                     child: Column(
                       children: <Widget>[
                         Padding(
@@ -66,7 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: width * 0.015),
+                                  padding: EdgeInsets.only(
+                                    bottom: height * 0.005
+                                  ),
                                   child: TextFormField(
                                     keyboardType: TextInputType.emailAddress,
                                     decoration: const InputDecoration(
@@ -129,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                         Padding(
                           padding: EdgeInsets.only(
                             left: width * 0.35, 
-                            bottom: height * 0.11, 
+                            bottom: height * 0.1, 
                           ),
                           child: RichText(
                             text: TextSpan(
@@ -147,7 +149,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: width * 0.05),
+                          padding: EdgeInsets.only(
+                            bottom: height * 0.03
+                          ),
                           child: Container(
                             height: height * 0.07,
                             width: double.maxFinite,
@@ -168,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: MaterialButton(
                               onPressed: (() {
                                   //login();
-                                  nextScreen(context, const HiddenDrawer());
+                                  nextScreen(context, const HomePage());
                                 }
                               ),
                               child: Text("Entrar",

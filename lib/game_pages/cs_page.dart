@@ -96,152 +96,162 @@ class _CSPageState extends State<CSPage> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text("Counter Strike 2"),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.black,
           width: width,
-          height: height + (height * 0.12),
-          child: Stack(
-            children: <Widget>[
-              Image.asset(
-                "assets/images/csgo2.jpg",
-                fit: BoxFit.fill,
-              ),
-              Positioned(            
-                top: height * 0.25,
-                child: Container(
-                  padding: EdgeInsets.only(
-                    left: width * 0.06,
-                    right: width * 0.06,
-                  ),
-                  width: width,
-                  height: height,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color.fromARGB(255, 0, 0, 0),
-                        Color.fromARGB(255, 46, 37, 19),
-                      ],
+          height: height + (height * 0.20),
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: height * 0.095,
+            ),
+            child: Stack(
+              children: <Widget>[
+                Image.asset(
+                  "assets/images/csgo2.jpg",
+                  fit: BoxFit.fill,
+                ),
+                Positioned(            
+                  top: height * 0.25,
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      left: width * 0.06,
+                      right: width * 0.06,
                     ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: height * 0.02),
-                    child: Padding(
-                      padding: const EdgeInsets.only(),
-                      // CONFIGURAR AS MARGENS
-                      child: Column(
-                        children: <Widget>[
-                          // COLUNA COM LINHA DENTRO PARA NOME E ESTRELAS
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Counter Strike 2',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width * 0.05,
-                                      fontFamily: 'CS',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    "assets/images/4.png",
-                                    height: height * 0.035,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: height * 0.01),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [                                  
-                                  Text(
-                                    'Strategic shooter game - FPS free to play',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width * 0.03,
-                                      fontFamily: 'CS',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'PG - 16',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width * 0.03,
-                                      fontFamily: 'CS',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: height * 0.03),
-                              SizedBox(
-                                height: height * 0.1, 
-                                child: ListView.separated(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 7,
-                                  separatorBuilder: (context, _) => const SizedBox(width: 10),
-                                  itemBuilder: (context, index) => iconCs(itemCs: itemsCs[index]),
-                                ),
-                              ),
-                              SizedBox(height: height * 0.035),
-                              Text(
-                                "Em Counter Strike: Global Offensive, você poder encarar uma das mais cruas experiências de um FPS (First Person Shooter). A simplicidade do original ainda está presente na nova versão, que obriga todos os jogadores a contar somente com a sua habilidade para dominar os campos de batalha.",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  height: 1.2,
-                                  color: Colors.white,
-                                  fontFamily: 'CS',
-                                  fontSize: width * 0.04,
-                                  leadingDistribution: TextLeadingDistribution.even,
-                                ),
-                              ),
-                              SizedBox(height: height * 0.01),
-                              Text(
-                                "Os dois grandes objetivos clássicos são os de: terroristas e contra terroristas. Uma hora você defende o território e no outro tenta o explodir, com 13 rounds. Jogue para descobrir qual a melhor estratégia neste FPS clássico que retornou com diversas novidades... Bem vindo ao CS:GO 2!",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  height: 1.2,
-                                  color: Colors.white,
-                                  fontFamily: 'CS',
-                                  fontSize: width * 0.04,
-                                  leadingDistribution: TextLeadingDistribution.even,
-                                ),
-                              ),
-                              SizedBox(height: height * 0.03),
-                              Text(
-                                "Conheça o time da SJG",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'CS',
-                                  fontSize: width * 0.06
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: height * 0.035),
-                          Container(
-                            height: height * 0.2,                            
-                            child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 5,
-                              separatorBuilder: (context, _) => const SizedBox(width: 10),
-                              itemBuilder: (context, index) => buildPlayerCard(item: items[index]),
-                            ),
-                          ),
+                    width: width,
+                    height: height,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                        Color.fromARGB(255, 9, 19, 49),
+                        Color.fromARGB(255, 19, 48, 87),
                         ],
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: height * 0.02),
+                      child: Padding(
+                        padding: const EdgeInsets.only(),
+                        // CONFIGURAR AS MARGENS
+                        child: Column(
+                          children: <Widget>[
+                            // COLUNA COM LINHA DENTRO PARA NOME E ESTRELAS
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Counter Strike 2',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: width * 0.05,
+                                        fontFamily: 'CS',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Image.asset(
+                                      "assets/images/4.png",
+                                      height: height * 0.035,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height * 0.01),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [                                  
+                                    Text(
+                                      'Strategic shooter game - FPS free to play',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: width * 0.03,
+                                        fontFamily: 'CS',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'PG - 16',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: width * 0.03,
+                                        fontFamily: 'CS',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height * 0.03),
+                                SizedBox(
+                                  height: height * 0.1, 
+                                  child: ListView.separated(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: 7,
+                                    separatorBuilder: (context, _) => const SizedBox(width: 10),
+                                    itemBuilder: (context, index) => iconCs(itemCs: itemsCs[index]),
+                                  ),
+                                ),
+                                SizedBox(height: height * 0.035),
+                                Text(
+                                  "Em Counter Strike: Global Offensive, você poder encarar uma das mais cruas experiências de um FPS (First Person Shooter). A simplicidade do original ainda está presente na nova versão, que obriga todos os jogadores a contar somente com a sua habilidade para dominar os campos de batalha.",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    height: 1.2,
+                                    color: Colors.white,
+                                    fontFamily: 'CS',
+                                    fontSize: width * 0.04,
+                                    leadingDistribution: TextLeadingDistribution.even,
+                                  ),
+                                ),
+                                SizedBox(height: height * 0.01),
+                                Text(
+                                  "Os dois grandes objetivos clássicos são os de: terroristas e contra terroristas. Uma hora você defende o território e no outro tenta o explodir, com 13 rounds. Jogue para descobrir qual a melhor estratégia neste FPS clássico que retornou com diversas novidades... Bem vindo ao CS:GO 2!",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    height: 1.2,
+                                    color: Colors.white,
+                                    fontFamily: 'CS',
+                                    fontSize: width * 0.04,
+                                    leadingDistribution: TextLeadingDistribution.even,
+                                  ),
+                                ),
+                                SizedBox(height: height * 0.03),
+                                Text(
+                                  "Conheça o time da SJG",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'CS',
+                                    fontSize: width * 0.06
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: height * 0.035),
+                            Container(
+                              height: height * 0.2,                            
+                              child: ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 5,
+                                separatorBuilder: (context, _) => const SizedBox(width: 10),
+                                itemBuilder: (context, index) => buildPlayerCard(item: items[index]),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -254,7 +264,7 @@ class _CSPageState extends State<CSPage> {
     width: width1 * 0.47,
     height: height1 * 0.06,
     decoration: BoxDecoration(
-      color: Color.fromARGB(255, 194, 128, 66).withOpacity(0.3),
+      color: const Color.fromARGB(255, 107, 90, 255).withOpacity(0.3),
       borderRadius: BorderRadius.all(Radius.circular(30))
     ),
     child: Padding(

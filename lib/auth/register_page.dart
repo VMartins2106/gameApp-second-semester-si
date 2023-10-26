@@ -34,8 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Stack(
             children: <Widget>[
               Image.asset("assets/images/homePNG.png",
-              width: double.maxFinite,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
               ),
               Positioned(
                 top: height * 0.4,
@@ -58,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(bottom: height * 0.055),
-                        child: Text(
+                        child: const Text(
                             "Venha ser o número 1 com a gente!",
                             style: TextStyle(
                               fontSize: 18,
@@ -179,8 +178,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                         end: Alignment.bottomRight,
                                         stops: [0.3, 1],
                                         colors: [
-                                        Color.fromARGB(255, 145, 185, 204),
-                                        Color.fromARGB(255, 136, 226, 192),
+                                        Color.fromARGB(132, 76, 169, 206),
+                                        Color.fromARGB(255, 48, 111, 192),
                                         ],
                                       ),
                                       borderRadius: BorderRadius.all(
@@ -188,17 +187,17 @@ class _RegisterPageState extends State<RegisterPage> {
                                       ),
                                     ),
                                     child: MaterialButton(
-                                      child: Text("Cadastrar",
+                                      onPressed: (() {
+                                        //register();
+                                        Navigator.pop(context);
+                                      }
+                                      ),
+                                      child: const Text("Cadastrar",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 17,
                                         ),
                                       ),
-                                      onPressed: (() {
-                                        //register();
-                                        Navigator.pop(context);
-                                      }
-                                    ),
                                   ),
                                 ),
                               ),

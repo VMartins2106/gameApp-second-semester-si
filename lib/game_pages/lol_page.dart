@@ -115,152 +115,159 @@ class _LoLPageState extends State<LoLPage> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text("League of Legends"),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.black,
           width: width,
-          height: height + (height * 0.12),
-          child: Stack(
-            children: <Widget>[
-              Image.asset(
-                "assets/images/league.jpg",
-                fit: BoxFit.fill,
-              ),
-              Positioned(            
-                top: height * 0.25,
-                child: Container(
-                  padding: EdgeInsets.only(
-                    left: width * 0.06,
-                    right: width * 0.06,
-                  ),
-                  width: width,
-                  height: height,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color.fromARGB(255, 0, 0, 0),
-                        Color.fromARGB(255, 92, 21, 82),
-                      ],
+          height: height + (height * 0.20),
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: height * 0.1,
+            ),
+            child: Stack(
+              children: <Widget>[
+                Image.asset("assets/images/league1.jpg"),
+                Positioned(            
+                  top: height * 0.25,
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      left: width * 0.06,
+                      right: width * 0.06,
                     ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: height * 0.02),
+                    width: width,
+                    height: height,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                        Color.fromARGB(255, 9, 19, 49),
+                        Color.fromARGB(255, 19, 48, 87),
+                      ],
+                      ),
+                    ),
                     child: Padding(
-                      padding: const EdgeInsets.only(),
-                      // CONFIGURAR AS MARGENS
-                      child: Column(
-                        children: <Widget>[
-                          // COLUNA COM LINHA DENTRO PARA NOME E ESTRELAS
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'League of Legends',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width * 0.05,
-                                      fontFamily: 'FrizQuadrata',
-                                      fontWeight: FontWeight.bold,
+                      padding: EdgeInsets.only(top: height * 0.02),
+                      child: Padding(
+                        padding: const EdgeInsets.only(),
+                        // CONFIGURAR AS MARGENS
+                        child: Column(
+                          children: <Widget>[
+                            // COLUNA COM LINHA DENTRO PARA NOME E ESTRELAS
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'League of Legends',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: width * 0.05,
+                                        fontFamily: 'FrizQuadrata',
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                  Image.asset(
-                                    "assets/images/4_5.png",
-                                    height: height * 0.035,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: height * 0.01),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [                                  
-                                  Text(
-                                    'Multiplayer battle arena (MOBA)',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width * 0.03,
-                                      fontFamily: 'FrizQuadrata',
-                                      fontWeight: FontWeight.bold,
+                                    Image.asset(
+                                      "assets/images/4_5.png",
+                                      height: height * 0.035,
                                     ),
-                                  ),
-                                  Text(
-                                    'PG - 12',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width * 0.03,
-                                      fontFamily: 'FrizQuadrata',
-                                      fontWeight: FontWeight.bold,
+                                  ],
+                                ),
+                                SizedBox(height: height * 0.01),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [                                  
+                                    Text(
+                                      'Multiplayer battle arena (MOBA)',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: width * 0.03,
+                                        fontFamily: 'FrizQuadrata',
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
+                                    Text(
+                                      'PG - 12',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: width * 0.03,
+                                        fontFamily: 'FrizQuadrata',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height * 0.03),
+                                SizedBox(
+                                  height: height * 0.1, 
+                                  child: ListView.separated(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: 10,
+                                    separatorBuilder: (context, _) => const SizedBox(width: 10),
+                                    itemBuilder: (context, index) => iconLol(itemLol: itemsLol[index]),
                                   ),
-                                ],
-                              ),
-                              SizedBox(height: height * 0.03),
-                              SizedBox(
-                                height: height * 0.1, 
-                                child: ListView.separated(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 10,
-                                  separatorBuilder: (context, _) => const SizedBox(width: 10),
-                                  itemBuilder: (context, index) => iconLol(itemLol: itemsLol[index]),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.035),
-                              Text(
-                                "League of Legends é um jogo gratuito de MOBA distribuído pela Riot Games. Ele é disponibilizado para PC e foi inspirado no modo Defense of the Ancients de Warcraft III. Nele temos duas equipes de 5 campeões cada disputando uma vitória na batalha dentro do mapa do jogo.",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  height: 1.1,
-                                  color: Colors.white,
-                                  fontFamily: 'FrizQuadrata',
-                                  fontSize: width * 0.04,
-                                  leadingDistribution: TextLeadingDistribution.even,
+                                SizedBox(height: height * 0.035),
+                                Text(
+                                  "League of Legends é um jogo gratuito de MOBA distribuído pela Riot Games. Ele é disponibilizado para PC e foi inspirado no modo Defense of the Ancients de Warcraft III. Nele temos duas equipes de 5 campeões cada disputando uma vitória na batalha dentro do mapa do jogo.",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    height: 1.1,
+                                    color: Colors.white,
+                                    fontFamily: 'FrizQuadrata',
+                                    fontSize: width * 0.04,
+                                    leadingDistribution: TextLeadingDistribution.even,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.01),
-                              Text(
-                                "São mais de 140 campeões com histórias diferentes. Seu critério de escolha pode ser ou pensando no seu estilo de jogo ou por se identificar mais com algum personagem. Afinal, são mais de 160 campeões você certamente irá encontrar o que você mais se divirta!",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  height: 1.1,
-                                  color: Colors.white,
-                                  fontFamily: 'FrizQuadrata',
-                                  fontSize: width * 0.04,
-                                  leadingDistribution: TextLeadingDistribution.even,
+                                SizedBox(height: height * 0.01),
+                                Text(
+                                  "São mais de 140 campeões com histórias diferentes. Seu critério de escolha pode ser ou pensando no seu estilo de jogo ou por se identificar mais com algum personagem. Afinal, são mais de 160 campeões você certamente irá encontrar o que você mais se divirta!",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    height: 1.1,
+                                    color: Colors.white,
+                                    fontFamily: 'FrizQuadrata',
+                                    fontSize: width * 0.04,
+                                    leadingDistribution: TextLeadingDistribution.even,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.03),
-                              Text(
-                                "Conheça o time da SJG",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'FrizQuadrata',
-                                  fontSize: width * 0.06
+                                SizedBox(height: height * 0.03),
+                                Text(
+                                  "Conheça o time da SJG",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'FrizQuadrata',
+                                    fontSize: width * 0.06
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: height * 0.035),
-                          Container(
-                            height: height * 0.2,                            
-                            child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 5,
-                              separatorBuilder: (context, _) => const SizedBox(width: 10),
-                              itemBuilder: (context, index) => buildPlayerCard(item: items[index]),
+                              ],
                             ),
-                          ),
-                        ],
+                            SizedBox(height: height * 0.035),
+                            Container(
+                              height: height * 0.2,                            
+                              child: ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 5,
+                                separatorBuilder: (context, _) => const SizedBox(width: 10),
+                                itemBuilder: (context, index) => buildPlayerCard(item: items[index]),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -273,8 +280,8 @@ class _LoLPageState extends State<LoLPage> {
     width: width1 * 0.4,
     height: height1 * 0.06,
     decoration: BoxDecoration(
-      color: Color.fromARGB(255, 156, 19, 138).withOpacity(0.3),
-      borderRadius: BorderRadius.all(Radius.circular(30))
+      color: const Color.fromARGB(255, 107, 90, 255).withOpacity(0.3),
+      borderRadius: const BorderRadius.all(Radius.circular(30))
     ),
     child: Padding(
       padding: EdgeInsets.all(width1 * 0.03),

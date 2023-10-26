@@ -37,7 +37,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   hidden_drawer_menu: ^3.0.1
-
+  flutter_speed_dial: ^7.0.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -71,6 +72,7 @@ flutter:
     - assets/images/player_lol/
     - assets/images/player_vava/
     - assets/images/player_dota/
+    - assets/images/icon/
 
     - assets/fonts/
 

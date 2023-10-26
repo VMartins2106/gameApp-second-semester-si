@@ -35,15 +35,36 @@ class _RecoverPasswordState extends State<RecoverPassword> {
         child: Container(
           width: double.maxFinite,
           height: height,
+          color: Colors.blue,
           child: Stack(
             children: <Widget>[
-              Image.asset(
-                "assets/images/logo.png",
-                width: double.maxFinite,
-                height: height * 0.33465,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: height * 0.05,
+                      left: width * 0.02,
+                    ),
+                    child: Image.asset(
+                      "assets/images/logo-nome.png",
+                      height: height * 0.07,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: height * 0.05,
+                      right: width * 0.05,
+                    ),
+                    child: Image.asset(
+                      "assets/images/justlogo.png",
+                      height: height * 0.075,
+                    ),
+                  ),
+                ],
               ),
               Positioned(
-                top: height * 0.22,
+                top: height * 0.14,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: width * 0.1, 
@@ -53,21 +74,24 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                   width: width,
                   height: height,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 230, 230, 230),
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70),
-                      topRight: Radius.circular(70),
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
                     ),
                   ),
                   child: Column(
                     children: <Widget>[
-                      Image.asset("assets/images/homePNG.png"),
+                      Image.asset(
+                        "assets/images/neon.png",
+                        height: height * 0.33,
+                      ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: height * 0.07, 
+                          top: height * 0.03, 
                           bottom: height * 0.03,
                         ),
-                        child: Text(
+                        child: const Text(
                           "Esqueceu sua senha?",
                           style: TextStyle(
                             fontSize: 32,
@@ -77,17 +101,17 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                         ),
                       ),
                       const Text(
-                        "Por favor, informe o e-mail associado a sua conta que enviaremos um link para o mesmo com as instruções para restauração da conta",
+                        "Por favor, forneça o e-mail associado, e enviaremos um link com as instruções para a restauração da conta.",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.justify,
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: height * 0.045,
-                          bottom: height * 0.045,
+                          top: height * 0.05,
+                          bottom: height * 0.07,
                         ),
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
@@ -119,8 +143,8 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                               end: Alignment.bottomRight,
                               stops: [0.3, 1],
                               colors: [
-                               Color.fromARGB(255, 145, 185, 204),
-                               Color.fromARGB(255, 136, 226, 192),
+                              Color.fromARGB(132, 76, 169, 206),
+                              Color.fromARGB(255, 48, 111, 192),
                               ],
                             ),
                             borderRadius: BorderRadius.all(
@@ -128,7 +152,7 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                             ),
                           ),
                           child: MaterialButton(
-                            child: Text("Enviar",
+                            child: const Text("Enviar",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,

@@ -106,6 +106,11 @@ class _VavaPageState extends State<VavaPage> {
     height1 = height;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text("Valorant"),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.black,
@@ -264,8 +269,8 @@ class _VavaPageState extends State<VavaPage> {
     width: width1 * 0.4,
     height: height1 * 0.06,
     decoration: BoxDecoration(
-      color: Color.fromARGB(255, 107, 90, 255).withOpacity(0.3),
-      borderRadius: BorderRadius.all(Radius.circular(30))
+      color: const Color.fromARGB(255, 107, 90, 255).withOpacity(0.3),
+      borderRadius: const BorderRadius.all(Radius.circular(30))
     ),
     child: Padding(
       padding: EdgeInsets.all(width1 * 0.03),
