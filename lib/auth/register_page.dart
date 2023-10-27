@@ -28,39 +28,79 @@ class _RegisterPageState extends State<RegisterPage> {
       body: _isLoading
       ? const Center(child: CircularProgressIndicator(color: Colors.black))
       : SingleChildScrollView(
-        child: SizedBox(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.1, 0.5],
+            colors: [
+              Colors.blue,
+              Color.fromARGB(255, 142, 219, 255),
+              ],
+            ),
+          ),
           width: double.maxFinite,
           height: height,
           child: Stack(
             children: <Widget>[
-              Image.asset("assets/images/homePNG.png",
-              fit: BoxFit.cover,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: height * 0.05,
+                      left: width * 0.02,
+                    ),
+                    child: Image.asset(
+                      "assets/images/logo-nome.png",
+                      height: height * 0.06,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: height * 0.05,
+                      right: width * 0.05,
+                    ),
+                    child: Image.asset(
+                      "assets/images/justlogo.png",
+                      height: height * 0.065,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: height * 0.15,
+                ),
+                child: Image.asset("assets/images/ez.png",
+                ),
               ),
               Positioned(
-                top: height * 0.4,
+                top: height * 0.48,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: width * 0.1, 
                     right: width * 0.1, 
-                    top: height * 0.07,
+                    top: height * 0.04,
                   ),
                   width: width,
                   height: height,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70),
-                      topRight: Radius.circular(70),
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
                     ),
                   ),
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(bottom: height * 0.055),
+                        padding: EdgeInsets.only(bottom: height * 0.03),
                         child: const Text(
-                            "Venha ser o número 1 com a gente!",
+                            "Venha ser o Nº1 com a gente!",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -168,7 +208,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: height * 0.05),
+                                padding: EdgeInsets.only(top: height * 0.03),
                                 child: Container(
                                     height: height * 0.07,
                                     width: double.maxFinite,
