@@ -77,19 +77,19 @@ class _IntroCsState extends State<IntroCs> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   "Feliz em vê-lo novamente",
                                   style: TextStyle(
-                                    color: Color.fromARGB(174, 255, 255, 255),
-                                    fontSize: 11
+                                    color: const Color.fromARGB(174, 255, 255, 255),
+                                    fontSize: width * 0.03
                                   ),
                                 ),
                                 SizedBox(height: height * 0.01,),
-                                const Text(
+                                Text(
                                   "Olá, Victor",
                                   style: TextStyle(
-                                    color: Color.fromARGB(255, 255, 255, 255),
-                                    fontSize: 25
+                                    color: const Color.fromARGB(255, 255, 255, 255),
+                                    fontSize: width * 0.07
                                   ),
                                 ),
                               ],
@@ -99,10 +99,10 @@ class _IntroCsState extends State<IntroCs> {
                           Padding(
                             padding: EdgeInsets.only(
                               top: height * 0.06,
-                              left: width * 0.05
+                              left: width * 0.06
                             ),
                             child: IconButton(
-                              iconSize: width * 0.1,
+                              iconSize: width * 0.07,
                               color: Colors.white,
                               onPressed: () => 
                               Navigator.pop(context), 
@@ -116,11 +116,12 @@ class _IntroCsState extends State<IntroCs> {
                         padding: EdgeInsets.only(
                           right: width * 0.53
                         ),
-                        child: const Text(
+                        child: Text(
                           "Vamos explorar",
                           style: TextStyle(
-                            color: Color.fromARGB(174, 255, 255, 255),
-                            fontSize: 15
+                            color: const Color.fromARGB(174, 255, 255, 255),
+                            fontSize: width * 0.035
+                                    // AQUI
                           ),
                         ),
                       ),
@@ -293,7 +294,7 @@ class _IntroCsState extends State<IntroCs> {
                                 fontSize: width * 0.06,
                               ),
                             ),
-                            Text("Veja mais",
+                            Text("Saiba mais",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: width * 0.04,
