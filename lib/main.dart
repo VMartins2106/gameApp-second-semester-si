@@ -5,6 +5,7 @@ import 'package:game_app/auth/login_page.dart';
 import 'package:game_app/game_pages/lol_page.dart';
 import 'package:game_app/widgets/widget.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
       theme: ThemeData(primarySwatch: Colors.deepPurple),

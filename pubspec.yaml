@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   hidden_drawer_menu: ^3.0.1
   flutter_speed_dial: ^7.0.0
+  get: ^4.6.6
   
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,8 @@ flutter:
     - assets/images/player_vava/
     - assets/images/player_dota/
     - assets/images/icon/
+
+    - assets/images/cs/
 
     - assets/fonts/
 
