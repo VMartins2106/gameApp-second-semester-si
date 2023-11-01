@@ -3,6 +3,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:game_app/game_pages/cs_page.dart';
 import 'package:game_app/game_pages/dota_page.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_cs.dart';
+import 'package:game_app/game_pages/introduction_pages/intro_valorant.dart';
 import 'package:game_app/game_pages/lol_page.dart';
 import 'package:game_app/game_pages/vava_page.dart';
 import 'package:game_app/widgets/widget.dart';
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SpeedDialChild(
             child: Image.asset("assets/images/icon/vava.png"),
-            onTap: () => nextScreen(context, const VavaPage()),
+            onTap: () => nextScreen(context, const IntroVava()),
             label: "Valorant",
           ),
           SpeedDialChild(
