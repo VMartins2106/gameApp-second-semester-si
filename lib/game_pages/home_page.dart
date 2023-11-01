@@ -3,6 +3,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:game_app/game_pages/cs_page.dart';
 import 'package:game_app/game_pages/dota_page.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_cs.dart';
+import 'package:game_app/game_pages/introduction_pages/intro_dota.dart';
+import 'package:game_app/game_pages/introduction_pages/intro_lol.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_valorant.dart';
 import 'package:game_app/game_pages/lol_page.dart';
 import 'package:game_app/game_pages/vava_page.dart';
@@ -34,7 +36,7 @@ class _HomePageState extends State<HomePage> {
           SpeedDialChild(
             child: Image.asset("assets/images/icon/lol.png"),
             label: "League of Legens",
-            onTap: () => nextScreen(context, const LoLPage()),
+            onTap: () => nextScreen(context, const IntroLol()),
           ),
           SpeedDialChild(
             child: Image.asset("assets/images/icon/vava.png"),
@@ -43,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SpeedDialChild(
             child: Image.asset("assets/images/icon/dota.png"),
-            onTap: () => nextScreen(context, const DotaPage()),
+            onTap: () => nextScreen(context, const IntroDota()),
             label: "Dota 2",
           ),
           SpeedDialChild(

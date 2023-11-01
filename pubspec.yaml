@@ -77,6 +77,8 @@ flutter:
 
     - assets/images/cs/
     - assets/images/valorant/
+    - assets/images/lol/
+    - assets/images/dota2/
 
     - assets/fonts/
 
