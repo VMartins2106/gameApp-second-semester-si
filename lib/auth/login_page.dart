@@ -2,8 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:game_app/auth/recover_password_page.dart';
 import 'package:game_app/auth/register_page.dart';
-import 'package:game_app/game_pages/hidden_drawer.dart';
-import 'package:game_app/game_pages/home_page.dart';
 import 'package:game_app/home/home_page.dart';
 import 'package:game_app/widgets/widget.dart';
 
@@ -173,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: MaterialButton(
                               onPressed: (() {
                                   //login();
-                                  nextScreen(context, const HomePagee());
+                                  nextScreen(context, const HomePage());
                                 }
                               ),
                               child: Text("Entrar",
