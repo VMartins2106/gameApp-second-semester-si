@@ -4,6 +4,7 @@ import 'package:game_app/auth/recover_password_page.dart';
 import 'package:game_app/auth/register_page.dart';
 import 'package:game_app/game_pages/hidden_drawer.dart';
 import 'package:game_app/game_pages/home_page.dart';
+import 'package:game_app/home/home_page.dart';
 import 'package:game_app/widgets/widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -172,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: MaterialButton(
                               onPressed: (() {
                                   //login();
-                                  nextScreen(context, const HomePage());
+                                  nextScreen(context, const HomePagee());
                                 }
                               ),
                               child: Text("Entrar",

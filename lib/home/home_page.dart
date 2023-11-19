@@ -4,22 +4,23 @@ import 'package:game_app/game_pages/introduction_pages/intro_cs.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_dota.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_lol.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_valorant.dart';
+import 'package:game_app/home/sidemenu.dart';
 import 'package:game_app/widgets/widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePagee extends StatefulWidget {
+  const HomePagee({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePagee> createState() => _HomePageeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageeState extends State<HomePagee> {
   @override
   Widget build(BuildContext context) {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+    
     return Scaffold(
       floatingActionButton: SpeedDial(
         icon: Icons.gamepad_outlined,
@@ -50,6 +51,12 @@ class _HomePageState extends State<HomePage> {
             label: "CS 2",
           ),
         ],
+      ),
+      drawer: SideMenu(),
+      appBar: AppBar(
+        title: const Text('appbar'),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Container(
