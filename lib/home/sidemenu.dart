@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:game_app/menu_pages/aboutus_page.dart';
+import 'package:game_app/menu_pages/expo_page.dart';
+import 'package:game_app/widgets/widget.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
@@ -35,35 +38,38 @@ class _SideMenuState extends State<SideMenu> {
             SizedBox(height: height * 0.03,),
             Stack(
               children: [
-                Image.asset('assets/images/globo.png'),                
-                Padding(
-                  padding:EdgeInsets.only(
-                    left: width * 0.1,
-                    top: height * 0.06
-                  ),
+                Center(
                   child: Image.asset(
-                    'assets/images/profile-icon.png',
-                    height: height * 0.26,
+                    'assets/images/globo.png',
+                    height: width * 0.6,
+                  ),
+                ),                
+                Padding(
+                  padding: EdgeInsets.only(top: height * 0.03, right: width * 0.02),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/profile-icon.png',
+                      height: height * 0.22,
+                    ),
                   ),
                 ),    
               ],
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: height * 0.01,
-                left: width * 0.04
+                left: width * 0.05
               ),
               child: Text("User name",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: height * 0.035,
+                  fontSize: height * 0.03,
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: height * 0.03,
-                left: width * 0.04
+                top: height * 0.02,
+                left: width * 0.05
               ),
               child: Text("User email@gmail.com",
                 style: TextStyle(
@@ -74,7 +80,7 @@ class _SideMenuState extends State<SideMenu> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: height * 0.05,
+                top: height * 0.04,
               ),
               child: Container(
                 height: height * 0.001,
@@ -125,11 +131,11 @@ class _SideMenuState extends State<SideMenu> {
             Padding(
               padding: EdgeInsets.only(
                 left: width * 0.04,
-                top: height * 0.04
+                top: height * 0.035
               ),
               child: GestureDetector(
                 onTap: () {
-                  
+                  nextScreen(context, const AboutUs());
                 },
                 child: Container(
                   width: width * 0.55,
@@ -166,11 +172,11 @@ class _SideMenuState extends State<SideMenu> {
             Padding(
               padding: EdgeInsets.only(
                 left: width * 0.04,
-                top: height * 0.04
+                top: height * 0.035
               ),
               child: GestureDetector(
                 onTap: () {
-                  
+                  nextScreen(context, const ExpoPage());
                 },
                 child: Container(
                   width: width * 0.55,
@@ -207,7 +213,7 @@ class _SideMenuState extends State<SideMenu> {
             Padding(
               padding: EdgeInsets.only(
                 left: width * 0.04,
-                top: height * 0.06
+                top: height * 0.16
               ),
               child: GestureDetector(
                 onTap: () {
