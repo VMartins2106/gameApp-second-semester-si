@@ -97,10 +97,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(bottom: height * 0.03),
-                        child: const Text(
+                        child: Text(
                             "Venha ser o Nº1 com a gente!",
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: width * 0.05,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -232,10 +232,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                         Navigator.pop(context);
                                       }
                                       ),
-                                      child: const Text("Cadastrar",
+                                      child: Text("Cadastrar",
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 17,
+                                          fontSize: width * 0.045,
                                         ),
                                       ),
                                   ),

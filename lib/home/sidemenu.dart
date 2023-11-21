@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_app/menu_pages/aboutus_page.dart';
 import 'package:game_app/menu_pages/expo_page.dart';
+import 'package:game_app/menu_pages/profile_page.dart';
 import 'package:game_app/widgets/widget.dart';
 
 class SideMenu extends StatefulWidget {
@@ -94,7 +95,7 @@ class _SideMenuState extends State<SideMenu> {
               ),
               child: GestureDetector(
                 onTap: () {
-                  
+                  nextScreen(context, const ProfilePage());
                 },
                 child: Container(
                   width: width * 0.55,

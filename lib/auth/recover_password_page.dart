@@ -162,9 +162,10 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                               //passwordReset();
                               Navigator.pop(context);
                             },
+                          ),
                         ),
                       ),
-                    ),],
+                    ],
                   ),
                 ),
               ),
