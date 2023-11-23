@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:game_app/auth/login_page.dart';
+import 'package:game_app/helper/helper_functions.dart';
+import 'package:game_app/home/home_page.dart';
+import 'package:game_app/service/auth_service.dart';
+import 'package:game_app/widgets/widget.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -16,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String password = "";
   String phone = "";
   String fullName = "";
-  //AuthService authService = AuthService();
+  AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -228,8 +232,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     ),
                                     child: MaterialButton(
                                       onPressed: (() {
-                                        //register();
-                                        Navigator.pop(context);
+                                        register();
                                       }
                                       ),
                                       child: Text("Cadastrar",
@@ -256,7 +259,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  /*
   register() async {
     if(formKey.currentState!.validate()) {
       setState(() {
@@ -286,6 +288,6 @@ class _RegisterPageState extends State<RegisterPage> {
           }
         });
     }
-  }*/
+  }
 
 }

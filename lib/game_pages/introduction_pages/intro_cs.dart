@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_app/game_pages/cs_page.dart';
+import 'package:game_app/helper/helper_functions.dart';
 import 'package:get/get.dart';
 
 class IntroCs extends StatefulWidget {
@@ -10,6 +11,23 @@ class IntroCs extends StatefulWidget {
 }
 
 class _IntroCsState extends State<IntroCs> {
+
+  @override
+  void initState() {
+    super.initState();
+    gettingUserName();
+  }
+
+  String userName = "";
+
+  gettingUserName() async {
+    await HelperFunctions.getUserNameFromSF().then((val) {
+      setState(() {
+        userName = val!;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -86,7 +104,7 @@ class _IntroCsState extends State<IntroCs> {
                                 ),
                                 SizedBox(height: height * 0.01,),
                                 Text(
-                                  "Olá, Victor",
+                                  "Olá, ${userName}",
                                   style: TextStyle(
                                     color: const Color.fromARGB(255, 255, 255, 255),
                                     fontSize: width * 0.07

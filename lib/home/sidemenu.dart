@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:game_app/auth/login_page.dart';
+import 'package:game_app/helper/helper_functions.dart';
 import 'package:game_app/menu_pages/aboutus_page.dart';
 import 'package:game_app/menu_pages/expo_page.dart';
 import 'package:game_app/menu_pages/profile_page.dart';
+import 'package:game_app/service/auth_service.dart';
+import 'package:game_app/shared/constants.dart';
 import 'package:game_app/widgets/widget.dart';
 
 class SideMenu extends StatefulWidget {
@@ -12,6 +16,31 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+
+  @override
+  void initState() {
+    super.initState();
+    gettingUserData();
+  }
+
+  AuthService authService = AuthService();
+
+  String userName = "";
+  String userEmail = "";
+
+  gettingUserData() async {
+    await HelperFunctions.getUserNameFromSF().then((val) {
+      setState(() {
+        userName = val!;
+      });
+    });
+    await HelperFunctions.getUserEmailFromSF().then((value) {
+      setState(() {
+        userEmail = value!;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -60,7 +89,7 @@ class _SideMenuState extends State<SideMenu> {
               padding: EdgeInsets.only(
                 left: width * 0.05
               ),
-              child: Text("User name",
+              child: Text(userName,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: height * 0.03,
@@ -72,7 +101,7 @@ class _SideMenuState extends State<SideMenu> {
                 top: height * 0.02,
                 left: width * 0.05
               ),
-              child: Text("User email@gmail.com",
+              child: Text(userEmail,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: height * 0.025,
@@ -95,6 +124,7 @@ class _SideMenuState extends State<SideMenu> {
               ),
               child: GestureDetector(
                 onTap: () {
+                  Navigator.pop(context);
                   nextScreen(context, const ProfilePage());
                 },
                 child: Container(
@@ -217,10 +247,12 @@ class _SideMenuState extends State<SideMenu> {
                 top: height * 0.16
               ),
               child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                },
+                onTap: () async {
+                  await authService.signOut();
+                  Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const LoginPage()), 
+                  (route) => false);
+                }, 
                 child: Container(
                   width: width * 0.55,
                   decoration: BoxDecoration(

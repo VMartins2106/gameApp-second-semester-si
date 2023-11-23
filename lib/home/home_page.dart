@@ -4,6 +4,7 @@ import 'package:game_app/game_pages/introduction_pages/intro_cs.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_dota.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_lol.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_valorant.dart';
+import 'package:game_app/helper/helper_functions.dart';
 import 'package:game_app/home/sidemenu.dart';
 import 'package:game_app/widgets/widget.dart';
 
@@ -15,6 +16,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    gettingUserName();
+  }
+
+  String userName = "";
+
+  gettingUserName() async {
+    await HelperFunctions.getUserNameFromSF().then((val) {
+      setState(() {
+        userName = val!;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -149,8 +167,7 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                               ),
                                               SizedBox(height: height * 0.01,),
-                                              Text(
-                                                "Olá, Victor",
+                                              Text("Olá, ${userName}",
                                                 style: TextStyle(
                                                   color: const Color.fromARGB(255, 255, 255, 255),
                                                   fontSize: width * 0.07

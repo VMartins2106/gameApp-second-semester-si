@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:game_app/auth/recover_password_page.dart';
 import 'package:game_app/auth/register_page.dart';
+import 'package:game_app/helper/helper_functions.dart';
 import 'package:game_app/home/home_page.dart';
+import 'package:game_app/service/auth_service.dart';
+import 'package:game_app/service/database_service.dart';
 import 'package:game_app/widgets/widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   String email = "";
   String password = "";
   bool _isLoading = false;
-  //AuthService authService = AuthService();
+  AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -170,8 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: MaterialButton(
                               onPressed: (() {
-                                  //login();
-                                  nextScreen(context, const HomePage());
+                                  login();
                                 }
                               ),
                               child: Text("Entrar",
@@ -230,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  /*login() async {
+  login() async {
     if(formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
@@ -265,6 +269,6 @@ class _LoginPageState extends State<LoginPage> {
           }
         });
     }
-  }*/
+  }
 
 }

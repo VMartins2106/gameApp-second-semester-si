@@ -1,5 +1,11 @@
+import 'dart:math';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:game_app/auth/login_page.dart';
+import 'package:game_app/helper/helper_functions.dart';
+import 'package:game_app/service/database_service.dart';
+import 'package:game_app/widgets/widget.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -10,12 +16,41 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
 
-  final formKey = GlobalKey<FormState>();
+  @override
+    void initState() {
+      super.initState();
+      gettingUserData();
+  }
+
+  String userName = "";
   String email = "";
-  String password = "";
   String phone = "";
-  String fullName = "";
-  //AuthService authService = AuthService();
+
+  bool boolName = true;
+  bool boolPhone = true;
+
+  String newName = "";
+  String newPhone = "";
+
+  final formKey = GlobalKey<FormState>();
+
+  gettingUserData() async {
+    await HelperFunctions.getUserEmailFromSF().then((value) {
+      setState(() {
+        email = value!;
+      });
+    });
+    await HelperFunctions.getUserNameFromSF().then((val) {
+      setState(() {
+        userName = val!;
+      });
+    });
+    await HelperFunctions.getUserPhoneFromSF().then((val) {
+      setState(() {
+        phone = val!;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,95 +157,82 @@ class _ProfilePageState extends State<ProfilePage> {
                                   padding: EdgeInsets.only(bottom: height * 0.015),
                                   child: TextFormField(
                                     keyboardType: TextInputType.text,
-                                    decoration: const InputDecoration(
-                                      icon:  Icon(Icons.person,
-                                      color: Colors.black,),
-                                      hintText: "Nome",
-                                      enabledBorder: UnderlineInputBorder (
+                                    decoration: InputDecoration(
+                                      enabled: false,
+                                      hintText: userName,
+                                      icon:  const Icon(Icons.person,
+                                      color: Colors.black),
+                                      enabledBorder: const UnderlineInputBorder (
                                         borderSide: BorderSide(
                                           width: 2, color: Colors.grey,
                                         ),
                                       ),
-                                      focusedBorder: UnderlineInputBorder(
+                                      focusedBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 15, 98, 153)),
                                       ),
                                     ),
-                        
-                                    // Save the name
                                     onChanged: (val){
                                       setState(() {
-                                        fullName = val;
+                                        if(val.isEmpty){
+                                          boolName = true;
+                                        } 
+                                        if(val.isNotEmpty){
+                                          boolName = false;
+                                        }
+                                        newName = val;
                                       });
-                                    },
-                                    validator: (val){
-                                      if(val!.length <= 2){
-                                        return "O nome deve conter no mínimo 3 caracteres!";
-                                      } else{
-                                        return null;
-                                      }
                                     },
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(bottom: height * 0.015),
                                   child: TextFormField(
+                                    enabled: false,
                                     keyboardType: TextInputType.emailAddress,
-                                    decoration: const InputDecoration(
-                                      icon: Icon(Icons.email,
-                                      color: Colors.black,),
-                                      hintText: "email",
-                                      enabledBorder: UnderlineInputBorder (
+                                    decoration: InputDecoration(
+                                      hintText: email,
+                                      icon: const Icon(Icons.email,
+                                      color: Colors.black),
+                                      enabledBorder: const UnderlineInputBorder (
                                         borderSide: BorderSide(
                                           width: 2, color: Colors.grey,
                                         ),
                                       ),
-                                      focusedBorder: UnderlineInputBorder(
+                                      focusedBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 15, 98, 153)),
                                       ),
                                     ),
-                                    //Savind and checking the email
-                                    onChanged: (val){
-                                      setState(() {
-                                        email = val;
-                                      });
-                                    },
-                                    validator: (val){
-                                      return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                        .hasMatch(val!) ? null : "Coloque um email válido";
-                                    },
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(bottom: height * 0.015),
                                   child: TextFormField(
                                     keyboardType: TextInputType.phone,
-                                    decoration: const InputDecoration(
-                                      icon: Icon(
+                                    decoration: InputDecoration(
+                                      label: Text(boolPhone ? phone : newPhone),
+                                      icon: const Icon(
                                         Icons.phone,
-                                        color: Colors.black,
+                                        color: Colors.black
                                       ),
-                                      hintText: "Telefone",
-                                      enabledBorder: UnderlineInputBorder (
+                                      enabledBorder: const UnderlineInputBorder (
                                         borderSide: BorderSide(
                                           width: 2, color: Colors.grey,
                                         ),
                                       ),
-                                      focusedBorder: UnderlineInputBorder(
+                                      focusedBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 15, 98, 153)),
                                       ),
-
                                     ),
                                     onChanged: (val){
                                       setState(() {
-                                        phone = val;
+                                        if(val.isEmpty){
+                                          boolPhone = true;
+                                        } 
+                                        if(val.isNotEmpty){
+                                          boolPhone = false;
+                                        }
+                                        newPhone = val;
                                       });
-                                    },
-                                    validator: (val){
-                                      if(val!.length <= 10){
-                                        return "Telefone inválido";
-                                      } else{
-                                        return null;
-                                      }
                                     },
                                   ),
                                 ),
@@ -234,7 +256,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                       ),
                                       child: MaterialButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          saveData();
+                                        },
                                         child: Text("Salvar",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -292,4 +316,45 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+
+  saveData() async{
+
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
+    if(formKey.currentState!.validate()) {
+      /*if(newName.isNotEmpty && newPhone.isEmpty){
+        // JUST NAME
+        HelperFunctions.saveUserNameSF(newName);
+        DatabaseService(uid: uid).updatingUserDataN(newName);
+        showSnackBar(context, Colors.green, "Dados alterados com sucesso!");
+        setState() {
+          userName = newName;
+        }
+      } else */if(newName.isEmpty && newPhone.isNotEmpty){
+        // JUST PHONE
+        HelperFunctions.saveUserPhoneSF(newPhone);
+        DatabaseService(uid: uid).updatingUserDataP(newPhone);
+        showSnackBar(context, Colors.green, "Dados alterados com sucesso!");
+        setState() {
+          phone = newPhone;
+        } 
+      } /*else if(newName.isNotEmpty && newPhone.isNotEmpty){
+        // NAME, PHONE
+        HelperFunctions.saveUserNameSF(newName);
+        HelperFunctions.saveUserPhoneSF(newPhone);
+        DatabaseService(uid: uid).updatingUserDataNP(newName, newPhone);
+        showSnackBar(context, Colors.green, "Dados alterados com sucesso!");
+        setState() {
+          userName = newName;
+          phone = newPhone;
+        }
+      } */else if (newName.isEmpty && newPhone.isEmpty){
+        showSnackBar(context, Colors.red, "Algum erro ocorreu, tente novamente!");
+      }
+
+    } else{
+      showSnackBar(context, Colors.red, "Algum erro ocorreu, tente novamente!");
+    }
+  }
+
 }

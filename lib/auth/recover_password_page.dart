@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:game_app/widgets/widget.dart';
 
 class RecoverPassword extends StatefulWidget {
   const RecoverPassword({super.key});
@@ -11,7 +13,7 @@ class _RecoverPasswordState extends State<RecoverPassword> {
 
   String email = '';
 
-  /*Future passwordReset() async {
+  Future passwordReset() async {
     try{
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
 
@@ -22,7 +24,7 @@ class _RecoverPasswordState extends State<RecoverPassword> {
       showSnackBar(context, Colors.red, e.message.toString());
       
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,8 +161,7 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                               ),
                             ),
                             onPressed: () {
-                              //passwordReset();
-                              Navigator.pop(context);
+                              passwordReset();
                             },
                           ),
                         ),
