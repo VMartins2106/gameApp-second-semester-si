@@ -132,13 +132,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fullName = val;
                                     });
                                   },
-                                  validator: (val){
-                                    if(val!.length <= 2){
-                                      return "O nome deve conter no mínimo 3 caracteres!";
-                                    } else{
-                                      return null;
-                                    }
-                                  },
                                 ),
                               ),
                               Padding(
@@ -157,10 +150,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                       email = val;
                                     });
                                   },
-                                  validator: (val){
-                                    return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                      .hasMatch(val!) ? null : "Coloque um email válido";
-                                  },
                                 ),
                               ),
                               Padding(
@@ -178,13 +167,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                       password = val;
                                     });
                                   },
-                                  validator: (val){
-                                    if(val!.length < 6){
-                                      return "A senha deve ter no mínimo 6 caracteres";
-                                    } else{
-                                      return null;
-                                    }
-                                  },
                                 ),
                               ),
                               Padding(
@@ -201,13 +183,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                     setState(() {
                                       phone = val;
                                     });
-                                  },
-                                  validator: (val){
-                                    if(val!.length <= 10){
-                                      return "Telefone inválido";
-                                    } else{
-                                      return null;
-                                    }
                                   },
                                 ),
                               ),
@@ -260,34 +235,56 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   register() async {
-    if(formKey.currentState!.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
-      await authService
-        .registerUserWithEmailandPassword(fullName, email, password, phone)
-        .then((value) async {
-          if(value == true){
-            // savind the shared preferences state
+    
+    bool valido = false;
+    RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(email) ? (valido = true) : (valido = false);
 
-            await HelperFunctions.saveUserLoggedInStatus(true);
-            await HelperFunctions.saveUserEmailSF(email);
-            await HelperFunctions.saveUserNameSF(fullName);
-            await HelperFunctions.saveUserPhoneSF(phone);
+    if (fullName.length >= 3 && fullName.length <=10) {
+      if(valido){
+        if(password.length >= 6){
+          if(phone.length >= 10){
+            if(formKey.currentState!.validate()) {
+              setState(() {
+                _isLoading = true;
+              });
+              await authService
+                .registerUserWithEmailandPassword(fullName, email, password, phone)
+                .then((value) async {
+                  if(value == true){
+                    // savind the shared preferences state
 
-            showSnackBar(context, Colors.green, "Bem vindo $fullName");
+                    await HelperFunctions.saveUserLoggedInStatus(true);
+                    await HelperFunctions.saveUserEmailSF(email);
+                    await HelperFunctions.saveUserNameSF(fullName);
+                    await HelperFunctions.saveUserPhoneSF(phone);
 
-            nextScreenReplace(context, const HomePage());
+                    showSnackBar(context, Colors.green, "Bem vindo $fullName");
 
+                    nextScreenReplace(context, const HomePage());
+
+                  }
+                  else{
+                    showSnackBar(context, Colors.red, value);
+                    setState(() {
+                      _isLoading = false;
+                    });
+                  }
+                });
+            }
+          }else{
+            showSnackBar(context, Colors.red, "Informe um telefone válido!");
           }
-          else{
-            showSnackBar(context, Colors.red, value);
-            setState(() {
-              _isLoading = false;
-            });
-          }
-        });
+        } else{
+          showSnackBar(context, Colors.red, "Sua senha deve ter no mínimo 6 caracteres!");
+        }
+      } else{
+        showSnackBar(context, Colors.red, "Informe um endereço de email válido!");
+      }
+    } else{
+      showSnackBar(context, Colors.red, "Seu nome deve ter entre 3 e 10 caracteres!");
     }
+
   }
 
 }

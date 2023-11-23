@@ -248,10 +248,32 @@ class _SideMenuState extends State<SideMenu> {
               ),
               child: GestureDetector(
                 onTap: () async {
-                  await authService.signOut();
-                  Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => const LoginPage()), 
-                  (route) => false);
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context, 
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text("Sair"),
+                        content: const Text("Tem certeza que deseja sair?"),
+                        actions: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }, 
+                            icon: const Icon(Icons.cancel, color: Colors.red,)
+                          ),
+                          IconButton(
+                            onPressed: () async {
+                              await authService.signOut();
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(builder: (context) => const LoginPage()), 
+                                (route) => false);
+                            }, 
+                            icon: const Icon(Icons.done, color: Colors.green,)
+                          ),
+                        ],
+                      );
+                  });
                 }, 
                 child: Container(
                   width: width * 0.55,

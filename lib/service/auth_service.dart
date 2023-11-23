@@ -10,6 +10,7 @@ class AuthService{
   //login
 
   Future loginWithUserEmailandPassword(String email, String password) async {
+
     try {
       User user = (await firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password)).user!;

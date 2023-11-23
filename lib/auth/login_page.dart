@@ -19,6 +19,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  String senha = "";
+
   final formKey = GlobalKey<FormState>();
   String email = "";
   String password = "";
@@ -88,12 +90,6 @@ class _LoginPageState extends State<LoginPage> {
                                         email = val;
                                       });
                                     },
-
-                                    // check the validation
-                                    validator: (val){
-                                      return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                        .hasMatch(val!) ? null : "Coloque um email válido";
-                                    },
                                   ),
                                 ),
                                 Padding(
@@ -112,19 +108,11 @@ class _LoginPageState extends State<LoginPage> {
                                     //suffixIcon: Icon(Icons.remove_red_eye),
                                     border: InputBorder.none
                                   ),
-
                                   // Save the data
                                   onChanged: (val){
                                     setState(() {
                                       password = val;
                                     });
-                                  },
-                                  validator: (val){
-                                    if(val!.length < 6){
-                                      return "A senha deve ter no mínimo 6 caracteres";
-                                      } else{
-                                      return null;
-                                      }
                                     },
                                   ),
                                 ),
@@ -132,25 +120,66 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: width * 0.35, 
-                            bottom: height * 0.1, 
-                          ),
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Esqueceu sua senha?',
-                                  style: const TextStyle(color: Colors.blueGrey),
-                                  recognizer: TapGestureRecognizer()
-                                  ..onTap = () { 
-                                    nextScreen(context, const RecoverPassword());
-                                  },
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                showSnackBar(context, Colors.green[700], "Ainda em desenvolvimento!");
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  top: height * 0.03,
+                                  bottom: height * 0.08, 
                                 ),
-                              ],
+                                child: RichText(
+                                  text: const TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'Esqueceu seu ',
+                                        style: TextStyle(color: Colors.blueGrey),
+                                      ),
+                                      TextSpan(
+                                        text: 'email?',
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                            GestureDetector(
+                              onTap: () {
+                                nextScreen(context, const RecoverPassword());
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  top: height * 0.03,
+                                  bottom: height * 0.08, 
+                                ),
+                                child: RichText(
+                                  text: const TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'Esqueceu sua ',
+                                        style: TextStyle(color: Colors.blueGrey),
+                                      ),
+                                      TextSpan(
+                                        text: 'senha?',
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         Padding(
                           padding: EdgeInsets.only(
@@ -235,39 +264,56 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   login() async {
-    if(formKey.currentState!.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
-      await authService
-        .loginWithUserEmailandPassword(email, password)
-        .then((value) async {
-          if(value == true){
-            // savind the shared preferences state
 
-            QuerySnapshot snapshot = await DatabaseService(
-              uid: FirebaseAuth.instance.currentUser!.uid)
-                .gettingUserData(email);
+    bool valido = false;
 
-            // saving the values to out SHARED PREFERENCES
+    RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(email) ? (valido = true) : (valido = false);
 
-            await HelperFunctions.saveUserLoggedInStatus(true);
-            await HelperFunctions.saveUserEmailSF(email);
-            await HelperFunctions.saveUserNameSF(snapshot.docs[0]['fullName']);
-            await HelperFunctions.saveUserPhoneSF(snapshot.docs[0]['phone']);
+    if(valido){
+      if(password.length >= 6){
+        if(formKey.currentState!.validate()) {
+          setState(() {
+            _isLoading = true;
+          });
+          await authService
+            .loginWithUserEmailandPassword(email, password)
+            .then((value) async {
+              if(value == true){
+                // savind the shared preferences state
 
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => const HomePage()), 
-              (route) => false);
+                QuerySnapshot snapshot = await DatabaseService(
+                  uid: FirebaseAuth.instance.currentUser!.uid)
+                    .gettingUserData(email);
 
-          }
-          else{
-            showSnackBar(context, Colors.red, value);
-            setState(() {
-              _isLoading = false;
-            });
-          }
-        });
+                // saving the values to out SHARED PREFERENCES
+
+                await HelperFunctions.saveUserLoggedInStatus(true);
+                await HelperFunctions.saveUserEmailSF(email);
+                await HelperFunctions.saveUserNameSF(snapshot.docs[0]['fullName']);
+                await HelperFunctions.saveUserPhoneSF(snapshot.docs[0]['phone']);
+
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const HomePage()), 
+                  (Route<dynamic> route) => false);
+
+              }
+              else{
+                showSnackBar(context, Colors.red, value);
+                setState(() {
+                  _isLoading = false;
+                });
+              }
+            }
+          );
+        }
+      }
+      else{
+        showSnackBar(context, Colors.red, "Sua senha deve contér no mínimo 6 caracteres!");
+      }
+    }
+    else{
+      showSnackBar(context, Colors.red, "Informe um endereço de email válido!");
     }
   }
 

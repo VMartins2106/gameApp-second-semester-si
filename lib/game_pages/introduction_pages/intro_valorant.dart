@@ -108,7 +108,7 @@ class _IntroVavaState extends State<IntroVava> {
                                   "Olá, ${userName}",
                                   style: TextStyle(
                                     color: const Color.fromARGB(255, 255, 255, 255),
-                                    fontSize: width * 0.07
+                                    fontSize: width * 0.055
                                   ),
                                 ),
                               ],
@@ -118,7 +118,7 @@ class _IntroVavaState extends State<IntroVava> {
                           Padding(
                             padding: EdgeInsets.only(
                               top: height * 0.06,
-                              left: width * 0.06
+                              left: width * 0.04
                             ),
                             child: IconButton(
                               iconSize: width * 0.07,
