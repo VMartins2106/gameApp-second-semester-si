@@ -5,6 +5,7 @@ import 'package:game_app/game_pages/introduction_pages/intro_dota.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_lol.dart';
 import 'package:game_app/game_pages/introduction_pages/intro_valorant.dart';
 import 'package:game_app/helper/helper_functions.dart';
+import 'package:game_app/home/people_page.dart';
 import 'package:game_app/home/sidemenu.dart';
 import 'package:game_app/widgets/widget.dart';
 
@@ -432,7 +433,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     child: MaterialButton(
-                                      onPressed: () {},
+                                      onPressed: () => nextScreen(context, const PeoplePage()),
                                       child: Text(
                                         "Veja mais",
                                           style: TextStyle(

@@ -101,7 +101,6 @@ class _ExpoPageState extends State<ExpoPage> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: width * 0.05,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                       ),

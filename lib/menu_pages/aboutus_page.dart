@@ -101,7 +101,6 @@ class _AboutUsState extends State<AboutUs> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: width * 0.045,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                       ),
